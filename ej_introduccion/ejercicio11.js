@@ -4,7 +4,7 @@ let whatever_limpio = whatever.trim();
 //console.log(whatever_limpio);
 let n_espacios = whatever_limpio.includes(" ");
 
-//Només replace la primera que trova, fa falta un bucle
+//Només replace la primera que troba, fa falta un bucle
 let aux = whatever_limpio;
 //console.log(whatever_limpio.length);
 for (let i = 0; i < whatever_limpio.length; i++){
