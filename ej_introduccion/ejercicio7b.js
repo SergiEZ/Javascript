@@ -9,7 +9,7 @@ let perimetro = base * 3;
 
 console.log(`
 <figura nombre="triangulo">
-    <datos lado="${base}">
+    <datos lado="${base}" alto="${altura}" />
     <perimetro>${perimetro}</perimetro>
     <area>${area}</area>
 </figura>
