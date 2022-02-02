@@ -11,3 +11,10 @@ console.log(textoPresentacion); */
 const rl = require("readline-sync");
 let name = rl.question("Dime tu nombre: ");
 console.log("Tu nombre es: " + name);
+var miobjeto = {
+    nombre: "Juan",
+    edad: 30
+};
+//miobjeto.nombre = "Martín";
+miobjeto.trabajo = "Programador";
+console.log(miobjeto.nombre + " " + miobjeto.edad + " " + miobjeto.trabajo);
