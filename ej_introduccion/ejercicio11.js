@@ -13,6 +13,6 @@ aux = aux.replace(" ","");
 }
 
 if (n_espacios == false) {
-    console.log("Tu frase no tiene espacios.");
+    console.log("Tu frase no tiene espacios!! 😠");
 }
 else console.log("Tu frase sin espacios:\n" + aux);
