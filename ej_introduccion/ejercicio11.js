@@ -5,6 +5,7 @@ let whatever_limpio = whatever.trim();
 let n_espacios = whatever_limpio.includes(" ");
 
 //Només replace la primera que troba, fa falta un bucle
+//UNLESS aux.replace(" /g", "");
 let aux = whatever_limpio;
 //console.log(whatever_limpio.length);
 for (let i = 0; i < whatever_limpio.length; i++){
