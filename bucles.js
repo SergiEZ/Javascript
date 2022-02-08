@@ -171,27 +171,57 @@ for(let i = N; i >= 1; i--){
 }
 console.log(N + "! = " + factor);
 */
-//11. Realiza un programa que lea números positivos 
+//11.-Realiza un programa que lea números positivos 
 //del teclado hasta el usuario introduzca un número negativo o 0.
 //El programa deberá calcular la media de los números
 /*
 const r = require("readline-sync");
-let n_rep = r.question("Dame un número: ");
-if (isNaN(n_rep)) process.exit(-1);
-let n = Number(n_rep);
 let total = 0;
-//while
-if (-(n)/ n !== 1 || n !== 0){
+let n;
+do{
+    let n_rep = r.question("Dame un número positivo: ");
+    if (isNaN(n_rep)) process.exit(-1);
+    n = Number(n_rep);
     total = total + n;
-}
-console.log(total);
-}
+    //console.log(n);
+} while (n !== 0 && n > 0)
+console.log(total-n);
 */
 
-//12. Amplía el programa anterior para que, además, el programa también calcule la desviación típica.
+//12.-Amplía el programa anterior para que, además, el programa también calcule la desviación típica.
+
+//13.-
+
+//14.-Lea las edades de los alumnos de un aula mayores de edad y menores.
+/*
+const r = require("readline-sync");
+const ALUMNOS = 10;
+let mayores = 0;
+let menores = 0;
+for(let i = 1; i <= ALUMNOS; i++){
+    let e = r.question(`Dime la edad del alumno ${i}: `);
+    if (isNaN(e)) process.exit(-1);
+    let edad = Number(e);
+    if(edad > 17) mayores++;
+    else menores++;
+}
+console.log(`Hay ${mayores} alumnos mayores de edad y ${menores} menores`);
+*/
+//15.-Realiza un programa que lea palabras por teclado hasta que el usuario teclee
+//una palabra cuya longitud exceda los 7 caracteres.
+/*
+const r = require("readline-sync");
+let palabra = "";
+while(palabra.length <= 7){
+    palabra = r.question(`Dime una palabra con menos de 7 letras: `);
+}
+console.log("Tu última palabra tenía más de 7 letras");
+*/
+//16.-Generar fechas de cumpleaños válidas e imprimirlas por pantalla (8 de Agosto)
+//hasta que el usuario indique por teclado que no quiere generar más fechas
 
 //17.-Realiza un programa informático que dibuje un tablero de ajedrez por el terminal
-
+/*
 let n = "N";
 let b = "B";
 for(let i = 0; i < 4; i++){
@@ -207,3 +237,4 @@ for(let i = 0; i < 4; i++){
     }
     console.log("\n");
 }
+*/
