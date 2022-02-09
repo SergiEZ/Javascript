@@ -93,7 +93,7 @@ for(let i = 1;i <= 10; i++){
 const max = 100;
 let n = 0;
 for(let i = 0; i <= 10; i++){
-    n = n + Math.trunc(Math.random()*max);
+    n = n + ;
 }
 console.log(n/i);
 */
@@ -187,26 +187,74 @@ do{
 } while (n !== 0 && n > 0)
 console.log(total-n);
 */
-
 //12.-Amplía el programa anterior para que, además, el programa también calcule la desviación típica.
+//xD
+//13a.-Adivina el número. El programa dice si es mayor o menor.
+/*
+const r = require("readline-sync");
+const MAX = 100;
+const NUMERO = Math.ceil(Math.random()*MAX);
+let contador = 0;
+//console.log(NUMERO);
 
-//13.-
+do{
+    let guess = r.question("Endevina el número: ");
+    if (isNaN(guess)) process.exit(-1);
+    n = Number(guess);
+    if(NUMERO < n) console.log("El número es menor.");
+    if(NUMERO > n) console.log("El número es major.");
+    contador++;
+} while (n !== NUMERO);
+console.log(`Has encertat en ${contador} intents, mal fiera!`);
+*/
+//13b.-Adivina el número. El programa dice si es múltiplo o divisor
+/*
+const r = require("readline-sync");
+const MAX = 100;
+const NUMERO = Math.ceil(Math.random()*MAX);
+let puntos = 100;
+//console.log(NUMERO);
 
+do{
+    let guess = r.question("Endevina el número: ");
+    if (isNaN(guess)) process.exit(-1);
+    n = Number(guess);
+    if(n % NUMERO == 0) console.log("És múltiplo.");
+    if(NUMERO % n == 0) console.log("És divisor.");
+    puntos--;
+} while (n !== NUMERO);
+console.log(`Has fet ${puntos} punts, mal fiera!`);
+*/
 //14.-Lea las edades de los alumnos de un aula mayores de edad y menores.
 /*
 const r = require("readline-sync");
 const ALUMNOS = 10;
 let mayores = 0;
 let menores = 0;
+let e;
+*/
+/*
 for(let i = 1; i <= ALUMNOS; i++){
-    let e = r.question(`Dime la edad del alumno ${i}: `);
+    e = r.question(`Dime la edad del alumno ${i}: `);
     if (isNaN(e)) process.exit(-1);
     let edad = Number(e);
     if(edad > 17) mayores++;
     else menores++;
 }
-console.log(`Hay ${mayores} alumnos mayores de edad y ${menores} menores`);
 */
+/*
+let i = 1;
+while (e!=0){
+    e = r.question(`Dime la edad del alumno ${i}: `);
+    if (isNaN(e)) process.exit(-1);
+    let edad = Number(e);
+    if(edad > 17) mayores++;
+    else menores++;
+    i++;
+}
+console.log(`Hay ${mayores} alumnos mayores de edad y ${menores-1} menores`);
+*/
+
 //15.-Realiza un programa que lea palabras por teclado hasta que el usuario teclee
 //una palabra cuya longitud exceda los 7 caracteres.
 /*
@@ -219,6 +267,43 @@ console.log("Tu última palabra tenía más de 7 letras");
 */
 //16.-Generar fechas de cumpleaños válidas e imprimirlas por pantalla (8 de Agosto)
 //hasta que el usuario indique por teclado que no quiere generar más fechas
+const r = require("readline-sync");
+const MESOS = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+"Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+let fecha = [];
+let dia;
+let mes;
+let any;
+let numero_fecha = 0;
+console.log("Gestor de fechas\nEscribe 0 para terminar el programa.")
+while(true){
+    numero_fecha++;
+    console.log(`Fecha ${numero_fecha}`);
+    dia = r.question(`Dime el día en número: `);
+    let d = Number(dia);
+    if(d == 0) break;
+    if(d > 31 || d < 0 || Number.isNaN(d)) {console.log("Día no vàlid!!"); break;}
+    mes = r.question(`Dime el mes el número: `);
+    let m = Number(mes);
+    if(m == 0) break;
+    if(m > 12 || m < 0 || Number.isNaN(m)) {console.log("Data no vàlida!!"); break;}
+    if(m == 2 && d > 29){console.log("Data no vàlida!!"); break}
+    if(d == 31 && m == 2 || m == 4 || m == 6 || m == 9 || m == 11){
+        console.log("Data no vàlida!!"); break
+    }
+    any = r.question(`Dime el mes el número: `);
+    let a = Number(any);
+    if(a < 1900 || a > 2022){console.log("Any no vàlid!!"); break;}
+    if(a % 100 != 0 && a % 4 != 0 && d > 28 && m == 2){
+        console.log("El any no es bixest!!"); break;
+    }
+    fecha[numero_fecha] = `Fecha ${numero_fecha}: ${dia} de ${MESOS[mes-1]} del ${any}`;
+}
+let i = 0;
+while(i<numero_fecha-1){
+    i++;
+    console.log(fecha[i]);
+}
 
 //17.-Realiza un programa informático que dibuje un tablero de ajedrez por el terminal
 /*
