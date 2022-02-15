@@ -167,7 +167,7 @@ console.log(contador + " elementos son diferentes.");
 //la primera con los números (3,4,8,12) enel ejemplo y la segunda
 //con las operaciones (’*‘,’+‘,’-’) los paréntesis no son necesarios.
 //Al finalizar mostrará las dos listas por pantalla.
-//Está mal pero whatever
+//Está mal pero w/e
 /*
 const EXPRESION = "45-3*22-78+2/56";
 const SIMBOLOS = "+*-/";
