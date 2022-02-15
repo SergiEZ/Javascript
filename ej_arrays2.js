@@ -82,10 +82,47 @@ console.log("La letra de tu DNI es " + LETRAS[resto]);
 */
 //6.- Modifica la aplicación 1. Una vez introducidos los números por el usuario,
 //la aplicación debe ordenarlos en el array y mostrar el array ordenado.
-//Utilizaremos el método de la burbuja (existenotros métodos más eficientes).
-//SKIP
+//Utilizaremos el método de la burbuja (existenotros métodos más eficientes)
+/*
+const rl = require("readline-sync");
+let numeros = [];
+let i = 0;
+let mayor = 0;
+let menor;
+let suma = 0;
 
+do {
+    numeros[i] = Number(rl.question("Dime un número que no sea 0: "));
+    suma = suma + numeros[i];
+    if (numeros[i] > mayor) mayor = numeros[i];
+    if (i == 0) menor = numeros[i];
+    if (numeros[i] < menor && numeros[i] != 0) menor = numeros[i];
+    i++;
+} while (numeros[i-1] != 0)
 
+numeros.pop();
+
+console.log(numeros);
+console.log(`El mayor es ${mayor} y el menor es ${menor}`);
+let modified;
+let aux;
+do {
+    modified = false;
+    for(let j = 0; j < numeros.length-1; j++){
+        if(numeros[j] > numeros[j+1]) {
+            modified = true;
+            aux = numeros[j];
+            numeros[j] = numeros[j+1];
+            numeros[j+1] = aux;
+        }
+    }
+}while(modified)
+
+console.log("Números ordenados: ");
+for(let value of numeros){
+    console.log(value);
+}
+*/
 //7.-Dado el siguiente array [‘Peras’, ‘Manzanas’, ‘Uva’, ‘Naranjas’]
 // crea un programa que devuelva un elemento HMTL lista desordenada.
 /*
@@ -130,15 +167,27 @@ console.log(contador + " elementos son diferentes.");
 //la primera con los números (3,4,8,12) enel ejemplo y la segunda
 //con las operaciones (’*‘,’+‘,’-’) los paréntesis no son necesarios.
 //Al finalizar mostrará las dos listas por pantalla.
+//Está mal pero whatever
 /*
-const EXPRESION = "3*4+(8-12)";
+const EXPRESION = "45-3*22-78+2/56";
+const SIMBOLOS = "+*-/";
 let numeros = [];
 let operadores = [];
 
 for(let i = 0; i < EXPRESION.length; i++){
-    if(isNaN(EXPRESION[i]) == true) operadores.push(EXPRESION[i]);
-    else numeros.push(EXPRESION[i]);
+    for(let j = 0; j < SIMBOLOS.length; j++){
+        if(EXPRESION[i] == SIMBOLOS[j]) operadores.push(EXPRESION[i]);
+    }
+    let aux;
+    if(isNaN(EXPRESION[i]) == false && isNaN(EXPRESION[i+1]) == false){
+        aux = EXPRESION[i] + EXPRESION[i+1];
+        EXPRESION[i++] = "";
+        numeros.push(aux);
+        
+    }
+    else if(isNaN(EXPRESION[i]) == false) numeros.push(EXPRESION[i]);
 }
+
 console.log("Números: ");
 for(let value of numeros) console.log(value);
 console.log("Operadores: ");
