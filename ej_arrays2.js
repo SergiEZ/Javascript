@@ -193,3 +193,36 @@ for(let value of numeros) console.log(value);
 console.log("Operadores: ");
 for(let value of operadores) console.log(value);
 */
+
+let expresion = "3*44+(88345-126)";
+let simbolos = [];
+let numeros = [];
+let numero = [];
+let n = 0;
+for(let i = 0; i < expresion.length; i++){
+    n = 0;
+    let caracter = expresion[i];
+    if(isNaN(caracter)) {  
+        if(numero.length != 0){
+            for(let j = 0;  j < numero.length; j++){
+                n += numero[j] * Math.pow(10, numero.length - j - 1)
+            }
+            numeros.push(n);
+            numero=[];
+        }
+        if(caracter != ')' && caracter != '(')
+            simbolos.push(caracter);
+    } else {
+        numero.push(caracter);
+    }
+}
+if(numero.length != 0){
+    for(let j = 0;  j < numero.length; j++){
+        n += numero[j] * Math.pow(10, numero.length - j - 1)
+    }
+    numeros.push(n);
+    numero=[];
+}
+console.log(expresion);
+console.log("Simbolos: " + simbolos);
+console.log("Números: " + numeros);
