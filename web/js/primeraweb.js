@@ -1,0 +1,1 @@
+onload=console.log("Bon día");
