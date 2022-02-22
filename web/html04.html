@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi primera función</title>
+    <script>
+        var contador = 0;
+        function alerta(mensaje) {
+            alert(mensaje);
+            contador++;
+        }
+
+        function verContador() {
+            alert("Has alertado: " + contador + " veces.");
+        }
+
+        var miAlerta = function (mensaje) {
+            alert(mensaje);
+            contador++;
+        }
+
+        var miContador = function (){
+            verContador();
+        }
+        //Codificar url calls
+        function codificar(){
+            var poblacion = "D'Alacant";
+            var password = "&& ' ' ?4";
+            var nombre = "Pepe Pepito";
+            var url = "http://192.168.100.100/form.html?";
+            url += "nombre=" + encodeURIComponent(nombre);
+            url += "&password=" + encodeURIComponent(password);
+            url += "&poblacion=" + encodeURIComponent(poblacion);
+            alert(url);
+            return url;
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Púsame para llamar a la función</h2>
+    <input type="button" name="alerta" value="Alerta" onclick="miAlerta('Alerta pulsada')">
+    <input type="button" name="verContador" value="Ver contador" onclick="miContador()">
+    <input type="button" name="codificar" value="URL Codificada" onclick="codificar()">
+
+</body>
+
+</html>
