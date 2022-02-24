@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronómetro</title>
+    <script>
+        var estado = "Apagado";
+        var textoBoton = "";
+        var tiempo = 0;
+        function mostrarTiempo(){
+            el = document.getElementById(tiempo);
+            el.value = Math.round(tiempo/1000) + " segundos.";
+        }
+        function cambiarEstado(){
+            if(estado == "Apagado"){
+                estado = "Encendido";
+                textoBoton = "Apagar";
+                inicio = new Date();
+
+            } else {
+                estado = "Apagado";
+                textoBoton = "Encender";
+                var lapso = new Date() - inicio;
+                tiempo = tiempo + lapso;
+                mostrarTiempo();
+            }
+
+            var el = document.getElementById("estado");
+            el.value = estado;
+            el = document.getElementById("botonEstado");
+            el.value = textoBoton;
+            return estado;
+        }
+    </script>
+
+</head>
+<!--ELEMENTO, EVENTO, RUTINA -->
+<!-- no funciona, check moodle-->
+<body>
+    <h1>Cronómetro</h1>
+    <label for="estado">Estado: </label>
+    <input type="text" name="estado" id="estado" value="Apagado" disabled><br />
+    <input type="button" value="Encender" id="botonEstado" onclick="cambiarEstado()"><br />
+    <input type="text" id="tiempo" value="0">
+
+</body>
+</html>
