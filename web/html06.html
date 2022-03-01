@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pruebas T6</title>
+    <script>
+        const _URL = "http://cursos.triangleestudis.com"
+        function _load(){
+            window.location = _URL;
+        }
+        function _reload(){
+            location.reload();
+        }
+        function _open(){
+            window.open(_URL);
+        }
+
+        let crono_start = -1;
+        let acumulado = 0;
+        let intervalId = 0;
+        let crono_time = 0;
+        function step_crono(){
+            crono_time = acumulado + ((new Date - crono_start)) / 1000;
+            document.getElementById("seconds").value = Math.round(crono_time);
+        }
+        function _start(){
+            crono_start = new Date();
+            intervalId = setInterval(step_crono, 1000);
+            document.getElementById("start").disabled = true;
+            document.getElementById("stop").disabled = false;
+        }
+        function _stop(){
+            clearInterval(intervalId);
+            acumulado += (new Date() - crono_start) /1000;
+            document.getElementById("stop").disabled = true;
+            document.getElementById("start").disabled = false;
+        }
+        function _reset(){
+            acumulado = 0;
+            crono_start = new Date();
+            step_crono();
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <h1>Botones</h1>
+        <input type="button" name="load" id="load" value="load" onclick="_load()">
+        <input type="button" name="reload" id="reload" value="reload" onclick="_reload()">
+        <input type="button" name="open" id="open" value="open" onclick="_open()">
+    </div>
+    <div>
+        <h1>Crono</h1>
+        <label for="seconds">Seconds:</label>
+        <input type="text" name="seconds" id="seconds" value="0"><br />
+        <input type="button" name="start" id="start" value="start" onclick="_start()">
+        <input type="button" name="stop" id="stop" value="stop" disabled onclick="_stop()">
+        <input type="button" name="reset" id="reset" value="reset" onclick="_reset()">
+    </div>
+</body>
+</html>

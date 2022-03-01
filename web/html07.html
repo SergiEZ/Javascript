@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>iterar por elementos</title>
+    <script>
+        function contenidoEtiquetasP(){
+            elements = document.getElementsByTagName("p");
+            for(el of elements){
+                let texto = "";
+                texto += "innerText -> " + el.innerHTML + "\n";
+                alert(texto);
+            }
+        }
+
+        function cambiarTexto(){
+            elements = document.getElementsByTagName("p");
+            let nuevo = "Texto cambiado jeje";
+            for(el of elements){
+                el.innerHTML = nuevo;
+            }
+        }
+
+        function stackTexto(){
+            let parrafo = prompt("Nou text...");
+            let elements = document.getElementsByClassName("stack");
+
+           for(let i = elements.length - 1; i > 0; i--){
+                document.getElementsByClassName("stack").innerHTML = parrafo[i];
+                elements[i].innerHTML = elements[i-1].innerHTML;
+            }
+            elements[0].innerHTML = parrafo;
+        }
+    </script>
+</head>
+
+<body onload="contenidoEtiquetasP()">
+    <section>
+        <p>El mejor sitio web del mundio mundial fenomenal jijiji jajaja!</p>
+        <p>Nah de locos</p>
+        <button id="cambio" onclick="cambiarTexto()">Púlsame</button>
+    </section>
+    <section>
+        <p class="stack">Primer párrafo</p>
+        <p class="stack">Segundo párrafo</p>
+        <button id="cambio" onclick="stackTexto()">Stack párrafo</button>
+    </section>
+</body>
+
+</html>

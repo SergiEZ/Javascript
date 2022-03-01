@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio HTML</title>
+    <script>
+        /*
+        function sumar() {
+            var suma = 0;
+            var n1 = document.getElementById('numero1').value;
+            var n2 = document.getElementById('numero2').value;
+            suma = Number(n1) + Number(n2);
+            // recuperar valores de texto y sumarlos
+            alert(suma);
+        }
+        function restar() {
+            var resta = 0;
+            var n1 = document.getElementById('numero1').value;
+            var n2 = document.getElementById('numero2').value;
+            resta = Number(n1) - Number(n2);
+            // recuperar valores de texto y retarlos
+            alert(resta);
+        }
+        function multiplicar() {
+            var multiplica = 0;
+            var n1 = document.getElementById('numero1').value;
+            var n2 = document.getElementById('numero2').value;
+            multiplica = Number(n1) * Number(n2);
+            // recuperar valores de texto y multiplicar
+            alert(multiplica);
+        }
+        function dividir() {
+            var divide = 0;
+            var n1 = document.getElementById('numero1').value;
+            var n2 = document.getElementById('numero2').value;
+            divide = Number(n1) / Number(n2);
+            // recuperar valores de texto y dividir
+            alert(divide);
+        }
+        */
+        //document.getElementById("botones").addEventListener("click", opera(this.value));
+        function opera(opcion) {
+            console.log("Bona tarda");
+            let resultado = 0;
+            console.log(opcion);
+            var n1 = Number(document.getElementById('numero1').value);
+            var n2 = Number(document.getElementById('numero2').value);
+            if (opcion == "sumar") return alert(n1 + n2);
+            if (opcion == "restar") return alert(n1 - n2);
+            if (opcion == "multiplicar") return alert(n1 * n2);
+            if (opcion == "dividir") return alert(n1 / n2);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="texto">
+        <label for="numero1">Numero 1:</label>
+        <input type="number" name="numero1" id="numero1"><br>
+        <label for="numero2">Número 2:</label>
+        <input type="number" name="numero2" id="numero2"><br>
+    </div>
+    <div id="bonones">
+        <!--
+        <input type="button" value="sumar" name="sumar" onclick="sumar()">
+        <input type="button" value="restar" name="restar" onclick="restar()">
+        <input type="button" value="multiplicar" name="multiplicar" onclick="multiplicar()">
+        <input type="button" value="dividir" name="dividir" onclick="dividir()">
+        -->
+        <input type="button" value="sumar" name="sumar" onclick=opera(this.value);>
+        <input type="button" value="restar" name="sumar" onclick=opera(this.value);>
+        <input type="button" value="multiplicar" name="sumar" onclick=opera(this.value);>
+        <input type="button" value="dividir" name="sumar" onclick=opera(this.value);>
+    </div>
+</body>
+
+</html>
