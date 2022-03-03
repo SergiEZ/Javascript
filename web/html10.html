@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventListener</title>
+    <script>//NOT WORKIN
+        function iniciar(){
+            element = document.getElementById("addButton_Id");
+            element.addEventListener("click", addCountry);
+            element = document.getElementById("removeButton_Id");
+            element.addEventListener("click", removeCountry);
+        }
+        window.addEventListener("load", iniciar)
+    </script>
+</head>
+<body>
+    <div>
+        <ul id="countryList_Id">
+            <li>España</li>
+            <li>Portugal</li>
+            <li>Francia</li>
+            <li>Italia</li>
+        </ul>
+    </div>
+    <input type="text" id="caja">
+    <input type="button" value="Añadir">
+    <br />
+    <input type="button" value="Deshacer" onclick="removeLastCountry()">
+</body>
+</html>

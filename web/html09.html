@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista</title>
+    <script>
+        function addCountryList() {
+            let newCountry = document.getElementById("caja").value;
+            let element = document.getElementById("countryList_Id");
+            let html_txt = "<li>" + newCountry + "</li>";
+            element.insertAdjacentHTML("beforeend", html_txt);
+            document.getElementById("caja").value = "";
+        }
+
+        function childAddCountryList() {
+            //check
+            let element = document.getElementById("countryList_Id");
+            let newCountry = document.getElementById("caja").value;
+            element.appendChild(newCountry);
+        }
+
+        function removeLastCountry(){
+            let lista = document.getElementById("countryList_Id");
+            if(lista.hasChildNodes)
+            lista.removeChild(lista.lastElementChild);
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <ul id="countryList_Id">
+            <li>España</li>
+            <li>Portugal</li>
+            <li>Francia</li>
+            <li>Italia</li>
+        </ul>
+    </div>
+    <input type="text" id="caja">
+    <input type="button" value="Añadir" onclick="addCountryList()">
+    <input type="button" value="Añadir 2.0" onclick="childAddCountryList()">
+    <br />
+    <input type="button" value="Deshacer" onclick="removeLastCountry()">
+</body>
+
+</html>

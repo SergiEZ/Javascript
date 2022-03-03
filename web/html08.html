@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambiar CSS</title>
+    <style>
+        .nuevo{
+            color: darkviolet;
+            background-color: rgb(233, 152, 193);
+            padding: 20px;
+            text-decoration: none;
+            font-size: 30px;
+        }
+        .important{
+            font-weight: bold;
+            color: darkred;
+        }
+    </style>
+    <script>
+        function cambiarParrafo1(){
+            let elements = document.getElementsByClassName("p1");
+            el = elements[0];
+            el.style.color = "red";
+            el.style.height = "60px";
+            el.style.fontSize = "30px";
+            el = elements [1];
+            el.style.color = "purple";
+            el.style.height = "70px";
+            el.style.fontSize = "15px";
+            el.style.backgroundColor = "yellow";
+            el.style.padding = "5em";
+            el = elements[2];
+            el.style.color = "white";
+            el.style.height = "50px";
+            el.style.fontSize = "25px";
+            el.style.backgroundColor = "black";
+            el.style.textAlign = "center";
+            el.style.border = "12px solid blue";
+        }
+
+        function cambiarParrafo2(){
+            let elements = document.getElementsByClassName("p2");
+
+            while (elements.length > 0){
+                elements[0].className = "nuevo";
+            }
+        }
+
+        function toggleImportant(){
+            document.getElementById("imp").classList.toggle("important");
+        }
+    </script>
+</head>
+<body>
+    <section>
+        <p class = "p1">El mejor sitio web del mundio mundial fenomenal jijiji!</p>
+        <p class = "p1">Nah de locos jajajajaja</p>
+        <p class = "p1">Párrafo loco jejejejeje</p>
+        <button id="cambio1" onclick="cambiarParrafo1()">Púlsame</button>
+    </section>
+    <section>
+        <p class = "p2">Bona tarda amics meus tots</p>
+        <p class = "p2">Pardal que vola a la cassola</p>
+        <p class = "p2">IEEEEEEEEEEEEEEEEEEEEEEAHHHHH</p>
+        <p class = "p2" id="imp">jaja</p>
+        <button id="cambio2" onclick="cambiarParrafo2()">Púlsame</button>
+        <button id="important" onclick="toggleImportant()">Important</button>
+    </section>
+</body>
+</html>

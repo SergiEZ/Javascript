@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <style>
+        label {
+            border: 1px solid black;
+            margin: 20px;
+            padding: 20px;
+            width: 300px;
+            height: 200px;
+        }
+
+        #contenedor {
+            width: 500px;
+            height: 40px;
+            padding: 10px;
+            border: 1px solid #999999;
+        }
+
+        #barraprogreso {
+            width: 0px;
+            height: 40px;
+            background-color: #000099;
+        }
+    </style>
+    <script>
+        function iniciar() {
+            var elemento = document.getElementById("contenedor");
+            window.addEventListener("keydown", tecla);
+        }
+        /*
+        function moverbarra(evento) {
+            var anchobarra = evento.offsetX - 10;
+            if (anchobarra < 0) {
+                anchobarra = 0;
+            } else if (anchobarra > 500) {
+                anchobarra = 500;
+            }
+            var elemento = document.getElementById("barraprogreso");
+            elemento.style.width = anchobarra + "px";
+        }
+        */
+        //function iniciar() {
+        //    document.getElementById("label_Id").addEventListener("click", mouseClickEvent);
+        //}
+        function mouseClickEvent(event) {
+            let mensaje = "Client: " + event.clientX + ":" + event.clientY + "\n";
+            mensaje += "Offset: " + event.offsetX + ":" + event.offsetY + "\n";
+            mensaje += "Window: " + event.screenX + ":" + event.screenY + "\n";
+            alert(mensaje);
+        }
+
+        function tecla(evento) {
+            var elemento = document.getElementById("barraprogreso");
+            var ancho = elemento.offsetWidth;
+            switch (evento.key) {
+                case "ArrowLeft":
+                    if (ancho > 10) ancho -= 10;
+                    break;
+                case "ArrowRight":
+                    if (ancho < 490) ancho += 10;
+                    break;
+            }
+            elemento.style.width = ancho + "px";
+        }
+        window.addEventListener("load", iniciar);
+    </script>
+</head>
+
+<body>
+    <div>
+        <label for="pais_id" id="label_Id">País</label>
+    </div>
+    <div id="contenedor">
+        <div id="barraprogreso"></div>
+    </div>
+</body>
+
+</html>

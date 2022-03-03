@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Formularios</title>
+    <script>
+        var nombre1, nombre2, edad;
+        function iniciar() {
+            nombre1 = document.getElementById("nombre");
+            nombre2 = document.getElementById("apellido");
+            edad = document.getElementById("edad");
+            nombre1.addEventListener("input", validacion);
+            nombre2.addEventListener("input", validacion);
+            edad.addEventListener("input", validacion);
+            validacion();
+        }
+        function validacion() {
+            if (nombre1.value == "" && nombre2.value == "") {
+                nombre1.setCustomValidity("Inserte su nombre o su apellido");
+                nombre1.style.background = "#FFDDDD";
+                nombre2.style.background = "#FFDDDD";
+            } else {
+                nombre1.setCustomValidity("");
+                nombre1.style.background = "#FFFFFF";
+                nombre2.style.background = "#FFFFFF";
+            }
+            if(edad.value < 18 || edad.value > 65){
+                edad.setCustomValidity("No tienes edad para esto");
+                edad.style.background = "#FFDDDD"
+            } else{
+                edad.setCustomValidity("");
+                edad.style.background = "#FFFFFF"; 
+            }
+        }
+        window.addEventListener("load", iniciar);
+    </script>
+</head>
+
+<body>
+    <section>
+        <form name="registracion" method="get" action="procesar.php">
+            <p><label>Nombre: <input type="text" name="nombre" id="nombre"></label></p>
+            <p><label>Apellido: <input type="text" name="apellido" id="apellido"></label></p>
+            <p><label>Edad: <input type="number" name="edad" id="edad"></label></p>
+            <p><input type="submit" value="Registrarse"></p>
+        </form>
+    </section>
+</body>
+
+</html>
