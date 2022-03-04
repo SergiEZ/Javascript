@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>API Web Storage</title>
+    <style>
+        #cajaformulario {
+            float: left;
+            padding: 20px;
+            border: 1px solid #999999;
+        }
+
+        #cajadatos {
+            float: left;
+            width: 400px;
+            margin-left: 20px;
+            padding: 20px;
+            border: 1px solid #999999;
+        }
+
+        #clave,
+        #texto {
+            width: 200px;
+        }
+
+        #cajadatos>div {
+            padding: 5px;
+            border-bottom: 1px solid #999999;
+        }
+        body, input, textarea{
+            background: white;
+        }
+    </style>
+    <script>
+        //fix
+        function iniciar() {
+            var boton = document.getElementById("grabar");
+            boton.addEventListener("click", nuevoitem);
+            addEventListener("storage", modificado);
+            //addEventListener("storage", fondo);
+            document.getElementById("panico").addEventListener(
+                "click", function(){
+                    localStorage.clear();
+                    mostrar();
+                }
+            )
+            mostrar();
+        }
+        function nuevoitem() {
+            var clave = document.getElementById("clave").value;
+            var valor = document.getElementById("texto").value;
+            localStorage.setItem(clave, valor);
+            document.getElementById("clave").value = "";
+            document.getElementById("texto").value = "";
+            mostrar();
+            fondo();
+        }
+        function modificado(evento) {
+            console.log(evento.key);
+            console.log(evento.oldValue);
+            console.log(evento.newValue);
+            console.log(evento.url);
+            console.log(evento.storageArea);
+            mostrar();
+        }
+        function mostrar() {
+            var cajadatos = document.getElementById("cajadatos");
+            cajadatos.innerHTML = "";
+            for (var f = 0; f < localStorage.length; f++) {
+                var clave = localStorage.key(f);
+                var valor = localStorage.getItem(clave);
+                cajadatos.innerHTML += "<div>" + clave + " - " + valor + "</div>";
+            }
+            colorFondo();
+            colorInput();
+        }
+        
+        function colorFondo() {
+            var body = document.getElementById("body")[0];
+            var color = localStorage.getItem("fondo");
+            if (color != null) body.style.background = color;
+        }
+
+        function colorInput() {
+            var texto = document.getElementById("texto");
+            var clave = document.getElementById("clave");
+            var color = localStorage.getItem("input");
+            if (color != null){
+                texto.style.background = color;
+                clave.style.background = color;
+            } 
+        }
+        window.addEventListener("load", iniciar); 
+    </script>
+</head>
+
+<body>
+    <section id="cajaformulario">
+        <form name="formulario">
+            <p><label>Clave: <input type="text" name="clave" id="clave"></label></p>
+            <p><label>Valor: <textarea name="texto" id="texto"></textarea></label></p>
+            <p><button type="button" id="grabar">Grabar</button></p>
+            <p><button type="button" id="panico">Panico</button></p>
+        </form>
+    </section>
+    <section id="cajadatos">
+        <p>Información no disponible</p>
+    </section>
+</body>
+
+</html>
