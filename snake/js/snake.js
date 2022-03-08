@@ -16,7 +16,7 @@ const DERECHA = 1;
 const ABAJO = 2;
 const IZQUIERDA = 3;
 var dir = DERECHA;
-var pause = true;
+var pause = false;
 var score = 0;
 var gameover = true;
 /*
@@ -78,8 +78,8 @@ function act() {
             score++;
             food.x = random(canvas.width / 10 - 1) * 10;
             food.y = random(canvas.height / 10 - 1) * 10;
-            for(let i = 0; i < 8; i++){
-            body.push(new Rectangle(-10, -10, 10, 10, "#264f11"));
+            for (let i = 0; i < 8; i++) {
+                body.push(new Rectangle(-10, -10, 10, 10, "#264f11"));
             }
         }
 
@@ -110,6 +110,7 @@ function reset() {
     gameover = false;
     body.length = 0;
     body.push(new Rectangle(40, 40, 10, 10, "#264f11"));
+    !pause;
 }
 function paint(lienzo) {
     var gradiente = lienzo.createLinearGradient(0, 0, 0, canvas.height);
@@ -125,6 +126,10 @@ function paint(lienzo) {
     lienzo.fillStyle = gradientPuntos;
     lienzo.font = "25px Georgia";
     lienzo.fillText('Puntuación: ' + score, 700, 45);
+    lienzo.font = "15px Georgia";
+    lienzo.fillText('[P] Pausa', 700, 65);
+    lienzo.fillText('[A] [S] [D]', 60, 575);
+    lienzo.fillText('[W]', 60, 555);
     body[0].fill(lienzo);
     food.fill(lienzo);
 
@@ -143,13 +148,16 @@ function paint(lienzo) {
     for (var i = 0; i < body.length; i++) {
         body[i].fill(lienzo);
     }
-    for (var i = body.length - 1; i > 0; i--) {
-        body[i].x = body[i - 1].x;
-        body[i].y = body[i - 1].y;
-    }
-    for (var i = 5; i < body.length; i++) {
-        if (body[0].intersects(body[i])) {
-            gameover = true;
+    if (!pause) {
+        for (var i = body.length - 1; i > 0; i--) {
+            body[i].x = body[i - 1].x;
+            body[i].y = body[i - 1].y;
+        }
+
+        for (var i = 5; i < body.length; i++) {
+            if (body[0].intersects(body[i])) {
+                gameover = true;
+            }
         }
     }
 
@@ -162,7 +170,9 @@ function paint(lienzo) {
         lienzo.font = "65px Georgia";
         lienzo.textAlign = 'center';
         if (gameover) {
-            lienzo.fillText('GAME OVER', 375, 195);
+            lienzo.fillText('GAME OVER', 375, 250);
+            lienzo.font = "25px Georgia";
+            lienzo.fillText('Pulsa Enter', 375, 285);
         } else lienzo.fillText('PAUSA', 130, 75);
     }
 }
